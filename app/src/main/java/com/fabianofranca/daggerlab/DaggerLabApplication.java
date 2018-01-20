@@ -1,28 +1,14 @@
 package com.fabianofranca.daggerlab;
 
-import android.app.Application;
+import com.fabianofranca.daggerlab.di.DaggerApplicationComponent;
 
-import com.fabianofranca.daggerlab.di.AppComponent;
-import com.fabianofranca.daggerlab.di.DaggerAppComponent;
+import dagger.android.AndroidInjector;
+import dagger.android.DaggerApplication;
 
-public class DaggerLabApplication extends Application {
-
-    private static DaggerLabApplication app;
-    private AppComponent appComponent;
+public class DaggerLabApplication extends DaggerApplication {
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        app = this;
-        appComponent = DaggerAppComponent.builder()
-                .build();
-    }
-
-    public static DaggerLabApplication getApp() {
-        return app;
-    }
-
-    public AppComponent getAppComponent() {
-        return  appComponent;
+    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
+        return DaggerApplicationComponent.builder().application(this).build();
     }
 }

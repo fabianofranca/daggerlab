@@ -2,14 +2,14 @@ package com.fabianofranca.daggerlab.main;
 
 import javax.inject.Inject;
 
-public class MainPresenter implements MainPresenterContract {
+public class MainPresenter implements MainContract.Presenter {
 
     private String name;
 
-    private MainViewContract view;
+    private MainContract.View view;
 
     @Inject
-    public MainPresenter(MainViewContract view) {
+    public MainPresenter(MainContract.View view) {
         this.view = view;
     }
 

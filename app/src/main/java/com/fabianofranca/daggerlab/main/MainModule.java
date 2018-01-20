@@ -7,5 +7,8 @@ import dagger.Module;
 public abstract class MainModule {
 
     @Binds
-    abstract MainPresenterContract provideMainPresenterContract(MainPresenter presenter);
+    abstract MainContract.Presenter bindPresenter(MainPresenter presenter);
+
+    @Binds
+    abstract MainContract.View bindView(MainActivity mainActivity);
 }

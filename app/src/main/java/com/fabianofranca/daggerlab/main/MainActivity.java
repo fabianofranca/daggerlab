@@ -1,25 +1,23 @@
 package com.fabianofranca.daggerlab.main;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
 import android.view.View;
 import android.widget.Toast;
 
-import com.fabianofranca.daggerlab.DaggerLabApplication;
 import com.fabianofranca.daggerlab.R;
-import com.fabianofranca.daggerlab.di.DaggerAppComponent;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import dagger.android.support.DaggerAppCompatActivity;
 
-public class MainActivity extends AppCompatActivity implements MainViewContract {
+public class MainActivity extends DaggerAppCompatActivity implements MainContract.View {
 
     @Inject
-    MainPresenterContract presenter;
+    MainContract.Presenter presenter;
 
     @BindView(R.id.main_name)
     AppCompatEditText nameEdit;
@@ -28,16 +26,6 @@ public class MainActivity extends AppCompatActivity implements MainViewContract 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        DaggerLabApplication
-                .getApp()
-                .getAppComponent()
-                .getMainComponentBuilder()
-                .get()
-                .view(this)
-                .build()
-                .inject(this);
-
         ButterKnife.bind(this);
     }
 
