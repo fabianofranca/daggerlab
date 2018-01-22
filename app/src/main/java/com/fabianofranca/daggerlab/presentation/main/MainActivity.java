@@ -1,4 +1,4 @@
-package com.fabianofranca.daggerlab.main;
+package com.fabianofranca.daggerlab.presentation.main;
 
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;

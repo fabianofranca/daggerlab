@@ -1,6 +1,6 @@
 package com.fabianofranca.daggerlab;
 
-import com.fabianofranca.daggerlab.di.DaggerApplicationComponent;
+import com.fabianofranca.daggerlab.dagger.DaggerApplicationComponent;
 
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;

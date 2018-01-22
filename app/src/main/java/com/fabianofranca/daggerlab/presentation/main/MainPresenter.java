@@ -1,4 +1,6 @@
-package com.fabianofranca.daggerlab.main;
+package com.fabianofranca.daggerlab.presentation.main;
+
+import com.fabianofranca.daggerlab.domain.GitHubRepository;
 
 import javax.inject.Inject;
 
@@ -8,9 +10,12 @@ public class MainPresenter implements MainContract.Presenter {
 
     private MainContract.View view;
 
+    private GitHubRepository repository;
+
     @Inject
-    public MainPresenter(MainContract.View view) {
+    public MainPresenter(MainContract.View view, GitHubRepository repository) {
         this.view = view;
+        this.repository = repository;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.fabianofranca.daggerlab.main;
+package com.fabianofranca.daggerlab.presentation.main;
 
 public interface MainContract {
 
