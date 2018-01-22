@@ -11,15 +11,17 @@ import javax.inject.Inject;
 public class GitHubManager implements GitHubRepository {
 
     private GitHubService service;
+    private RetrofitRequest<SearchResult> request;
 
     @Inject
-    public GitHubManager(GitHubService service) {
+    public GitHubManager(GitHubService service, RetrofitRequest<SearchResult> request) {
         this.service = service;
+        this.request = request;
     }
 
     @Override
     public void getRepositories(final int page, Result<SearchResult> result) {
-
-        new RetrofitRequest<>(service.searchRepositories(page)).go(result);
+        request.call(service.searchRepositories(page))
+                .go(result);
     }
 }

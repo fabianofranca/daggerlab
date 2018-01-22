@@ -6,7 +6,7 @@ import com.fabianofranca.daggerlab.DaggerLabApplication;
 import com.fabianofranca.daggerlab.dagger.module.ActivityBindingModule;
 import com.fabianofranca.daggerlab.dagger.module.ApplicationModule;
 import com.fabianofranca.daggerlab.dagger.module.infraestruture.BaseUrlModule;
-import com.fabianofranca.daggerlab.dagger.module.infraestruture.ManagerModule;
+import com.fabianofranca.daggerlab.dagger.module.infraestruture.manager.GitHubManagerModule;
 import com.fabianofranca.daggerlab.dagger.module.infraestruture.ServiceModule;
 
 import javax.inject.Singleton;
@@ -23,7 +23,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
         AndroidSupportInjectionModule.class,
         BaseUrlModule.class,
         ServiceModule.class,
-        ManagerModule.class})
+        GitHubManagerModule.class})
 public interface ApplicationComponent extends AndroidInjector<DaggerLabApplication> {
 
     @Component.Builder
