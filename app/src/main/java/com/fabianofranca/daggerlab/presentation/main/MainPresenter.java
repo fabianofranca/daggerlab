@@ -1,6 +1,8 @@
 package com.fabianofranca.daggerlab.presentation.main;
 
 import com.fabianofranca.daggerlab.domain.GitHubRepository;
+import com.fabianofranca.daggerlab.infraestruture.services.dto.SearchResult;
+import com.fabianofranca.daggerlab.tools.Result;
 
 import javax.inject.Inject;
 

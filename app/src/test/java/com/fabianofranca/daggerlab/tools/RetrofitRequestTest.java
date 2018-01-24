@@ -5,41 +5,55 @@ import com.fabianofranca.daggerlab.tools.retrofit.RetrofitRequest;
 
 import org.junit.Test;
 import org.mockito.Mock;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 
-import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.verify;
 
 public class RetrofitRequestTest extends BaseTest {
 
     @Mock
-    private Call<Object> call;
+    private Call<String> call;
 
     @Mock
-    private Result<Object> result;
+    private Result<String> result;
 
     @Test
-    public void call_isCorrect() throws Exception {
+    public void callSuccess_isCorrect() throws Exception {
+        doAnswer(new Answer() {
+            @Override
+            public Object answer(InvocationOnMock invocation) throws Throwable {
+                result.success(null);
+                return null;
+            }
+        }).when(call).enqueue(any(Callback.class));
 
-        RetrofitRequest<Object> request = new RetrofitRequest<>();
+        RetrofitRequest<String> request = new RetrofitRequest<>(call);
 
-        RetrofitRequest<Object> requestReturn = request.call(call);
+        request.call(result);
 
-        assertEquals(request, requestReturn);
+        verify(result).success(null);
     }
 
     @Test
-    public void go_isCorrect() throws Exception {
-        RetrofitRequest<Object> request = new RetrofitRequest<>();
+    public void callFailure_isCorrect() throws Exception {
+        doAnswer(new Answer() {
+            @Override
+            public Object answer(InvocationOnMock invocation) throws Throwable {
+                result.failure(null);
+                return null;
+            }
+        }).when(call).enqueue(any(Callback.class));
 
-        request.call(call);
-        request.go(result);
+        RetrofitRequest<String> request = new RetrofitRequest<>(call);
 
-        verify(call).enqueue((Callback<Object>)any());
+        request.call(result);
 
-        //TODO: Terminar teste e verificando as chamadas ao result
+        verify(result).failure(null);
     }
 }

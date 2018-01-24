@@ -10,9 +10,7 @@ import com.fabianofranca.daggerlab.tools.retrofit.RetrofitRequest;
 import org.junit.Test;
 import org.mockito.Mock;
 
-import retrofit2.Call;
-
-import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -27,20 +25,15 @@ public class GitHubManagerTest extends BaseTest {
     @Mock
     private RetrofitRequest<SearchResult> request;
 
-    @Override
-    public void setUp() throws Exception {
-        super.setUp();
-
-        when(request.call((Call<SearchResult>)any())).thenReturn(request);
-    }
-
     @Test
     public void getRepositories_isCorrect() throws Exception {
 
-        GitHubManager manager = new GitHubManager(service,  request);
+        GitHubManager manager = new GitHubManager(service);
+
+        when(service.searchRepositories(anyInt())).thenReturn(request);
 
         manager.getRepositories(1, result);
 
-        verify(request).go(result);
+        verify(request).call(result);
     }
 }

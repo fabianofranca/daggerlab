@@ -1,34 +1,25 @@
 package com.fabianofranca.daggerlab.tools.retrofit;
 
-import com.fabianofranca.daggerlab.tools.BaseRequest;
+import com.fabianofranca.daggerlab.domain.Request;
+import com.fabianofranca.daggerlab.tools.RequestException;
 import com.fabianofranca.daggerlab.tools.Result;
 
-import javax.inject.Inject;
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RetrofitRequest<T> implements BaseRequest<T> {
+public class RetrofitRequest<T> implements Request<T> {
 
     private Call<T> call;
 
-    @Inject
-    public RetrofitRequest() {
-    }
-
-    public RetrofitRequest<T> call(Call<T> call) {
+    public RetrofitRequest(Call<T> call) {
         this.call = call;
-        return this;
     }
 
     @Override
-    public void go(final Result<T> result) {
-
-        if (call == null) {
-            throw new RuntimeException("Call<T> instance not found");
-        }
-
+    public void call(final Result<T> result) {
         call.enqueue(new Callback<T>() {
             @Override
             public void onResponse(Call<T> call, Response<T> response) {
@@ -40,5 +31,22 @@ public class RetrofitRequest<T> implements BaseRequest<T> {
                 result.failure(t);
             }
         });
+    }
+
+    @Override
+    public T execute() {
+        Response<T> response;
+
+        try {
+            response = call.execute();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        if (!response.isSuccessful()) {
+            throw new RequestException(response.message(), response.code());
+        }
+
+        return response.body();
     }
 }

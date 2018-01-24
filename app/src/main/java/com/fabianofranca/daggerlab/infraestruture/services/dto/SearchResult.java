@@ -1,6 +1,6 @@
 package com.fabianofranca.daggerlab.infraestruture.services.dto;
 
-import com.fabianofranca.daggerlab.domain.models.Repo;
+import com.fabianofranca.daggerlab.domain.entity.Repo;
 
 import java.util.List;
 

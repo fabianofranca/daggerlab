@@ -2,6 +2,7 @@ package com.fabianofranca.daggerlab.dagger.module.infraestruture;
 
 import com.fabianofranca.daggerlab.infraestruture.services.BaseUrl;
 import com.fabianofranca.daggerlab.infraestruture.services.GitHubService;
+import com.fabianofranca.daggerlab.tools.retrofit.DomainCallAdapterFactory;
 
 import javax.inject.Singleton;
 
@@ -26,6 +27,7 @@ public class ServiceModule {
 
         Retrofit retrofit =  new Retrofit.Builder()
                 .baseUrl(baseUrl.getUrl())
+                .addCallAdapterFactory(DomainCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpBuilder.build())
                 .build();

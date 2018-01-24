@@ -1,4 +1,4 @@
-package com.fabianofranca.daggerlab.domain.models;
+package com.fabianofranca.daggerlab.domain.entity;
 
 public class Repo {
     private String name;
