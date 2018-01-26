@@ -6,9 +6,7 @@ import com.fabianofranca.daggerlab.infraestruture.services.dto.SearchResult;
 
 import javax.inject.Inject;
 
-public class MainPresenter implements MainContract.Presenter {
-
-    private String name;
+public class MainPresenter implements MainContract.Presenter, Result<SearchResult> {
 
     private MainContract.View view;
 
@@ -18,28 +16,22 @@ public class MainPresenter implements MainContract.Presenter {
     public MainPresenter(MainContract.View view, GitHubRepository repository) {
         this.view = view;
         this.repository = repository;
-
-        //TODO Criar RecyclerView e reescrever essa chamada da maneira correta
-        repository.getRepositories(1, new Result<SearchResult>() {
-            @Override
-            public void success(SearchResult data) {
-
-            }
-
-            @Override
-            public void failure(Throwable throwable) {
-
-            }
-        });
     }
 
     @Override
-    public void setName(String name) {
-        this.name = name;
+    public void refreshRepoList(int page) {
+        view.showLoading();
+        repository.getRepositories(page, this);
     }
 
     @Override
-    public void showName() {
-        view.showToast(name);
+    public void success(SearchResult data) {
+        view.updateRepoList(data.getRepositories());
+        view.hideLoading();
+    }
+
+    @Override
+    public void failure(Throwable throwable) {
+        view.hideLoading();
     }
 }
