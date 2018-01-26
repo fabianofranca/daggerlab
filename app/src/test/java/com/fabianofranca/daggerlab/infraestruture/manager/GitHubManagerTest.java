@@ -1,11 +1,11 @@
 package com.fabianofranca.daggerlab.infraestruture.manager;
 
-import com.fabianofranca.daggerlab.base.BaseTest;
+import com.fabianofranca.daggerlab.BaseTest;
 import com.fabianofranca.daggerlab.infraestruture.manager.GitHub.GitHubManager;
 import com.fabianofranca.daggerlab.infraestruture.services.GitHubService;
 import com.fabianofranca.daggerlab.infraestruture.services.dto.SearchResult;
-import com.fabianofranca.daggerlab.tools.Result;
-import com.fabianofranca.daggerlab.tools.retrofit.RetrofitRequest;
+import com.fabianofranca.daggerlab.infraestruture.services.core.Result;
+import com.fabianofranca.daggerlab.infraestruture.services.core.retrofit.RetrofitRequest;
 
 import org.junit.Test;
 import org.mockito.Mock;

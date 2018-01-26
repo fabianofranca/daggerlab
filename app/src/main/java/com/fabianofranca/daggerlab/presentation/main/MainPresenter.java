@@ -1,8 +1,8 @@
 package com.fabianofranca.daggerlab.presentation.main;
 
-import com.fabianofranca.daggerlab.domain.GitHubRepository;
+import com.fabianofranca.daggerlab.domain.repositories.GitHubRepository;
+import com.fabianofranca.daggerlab.infraestruture.services.core.Result;
 import com.fabianofranca.daggerlab.infraestruture.services.dto.SearchResult;
-import com.fabianofranca.daggerlab.tools.Result;
 
 import javax.inject.Inject;
 
@@ -18,6 +18,19 @@ public class MainPresenter implements MainContract.Presenter {
     public MainPresenter(MainContract.View view, GitHubRepository repository) {
         this.view = view;
         this.repository = repository;
+
+        //TODO Criar RecyclerView e reescrever essa chamada da maneira correta
+        repository.getRepositories(1, new Result<SearchResult>() {
+            @Override
+            public void success(SearchResult data) {
+
+            }
+
+            @Override
+            public void failure(Throwable throwable) {
+
+            }
+        });
     }
 
     @Override

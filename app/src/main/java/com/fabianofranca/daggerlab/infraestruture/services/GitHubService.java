@@ -1,9 +1,8 @@
 package com.fabianofranca.daggerlab.infraestruture.services;
 
-import com.fabianofranca.daggerlab.domain.Request;
+import com.fabianofranca.daggerlab.infraestruture.services.core.Request;
 import com.fabianofranca.daggerlab.infraestruture.services.dto.SearchResult;
 
-import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 

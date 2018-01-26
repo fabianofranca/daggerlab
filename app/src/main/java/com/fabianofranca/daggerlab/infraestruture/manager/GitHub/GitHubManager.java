@@ -1,9 +1,9 @@
 package com.fabianofranca.daggerlab.infraestruture.manager.GitHub;
 
-import com.fabianofranca.daggerlab.domain.GitHubRepository;
+import com.fabianofranca.daggerlab.domain.repositories.GitHubRepository;
 import com.fabianofranca.daggerlab.infraestruture.services.GitHubService;
 import com.fabianofranca.daggerlab.infraestruture.services.dto.SearchResult;
-import com.fabianofranca.daggerlab.tools.Result;
+import com.fabianofranca.daggerlab.infraestruture.services.core.Result;
 
 import javax.inject.Inject;
 

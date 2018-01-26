@@ -1,14 +1,12 @@
 package com.fabianofranca.daggerlab.infraestruture.services;
 
-import com.fabianofranca.daggerlab.infraestruture.services.base.GitHubServiceBaseTest;
-
 import okhttp3.mockwebserver.MockResponse;
 
 public class GitHubServiceMock {
 
     public static final String GET_REPOSITORIES_SUCCESS_JSON = "get_repositories_success.json";
 
-    public static GitHubService setupGetRepositoriesSuccessMock(GitHubServiceBaseTest test)
+    public static GitHubService setupGetRepositoriesSuccessMock(BaseGitHubServiceTest test)
             throws Exception {
 
         String json = test.getStringFileContent(GET_REPOSITORIES_SUCCESS_JSON);
@@ -18,7 +16,7 @@ public class GitHubServiceMock {
         return test.getService();
     }
 
-    public static GitHubService setupGetRepositoriesFailedMock(GitHubServiceBaseTest test)
+    public static GitHubService setupGetRepositoriesFailedMock(BaseGitHubServiceTest test)
             throws Exception {
 
         test.getServer().enqueue(new MockResponse().setResponseCode(500));

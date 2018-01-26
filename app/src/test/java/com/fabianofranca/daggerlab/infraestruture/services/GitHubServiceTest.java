@@ -1,16 +1,17 @@
 package com.fabianofranca.daggerlab.infraestruture.services;
 
 import com.fabianofranca.daggerlab.domain.entity.Repo;
-import com.fabianofranca.daggerlab.infraestruture.services.base.GitHubServiceBaseTest;
+import com.fabianofranca.daggerlab.infraestruture.services.core.RequestException;
 import com.fabianofranca.daggerlab.infraestruture.services.dto.SearchResult;
-import com.fabianofranca.daggerlab.tools.RequestException;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
 
-public class GitHubServiceTest extends GitHubServiceBaseTest {
+import static org.junit.Assert.assertEquals;
+
+public class GitHubServiceTest extends BaseGitHubServiceTest {
 
     @Test
     public void getRepositories_isCorrect() throws Exception {
@@ -25,10 +26,10 @@ public class GitHubServiceTest extends GitHubServiceBaseTest {
         Assert.assertEquals("/search/repositories?q=license:mit&sort=stars&page=1",
                 getServer().takeRequest().getPath());
 
-        Assert.assertEquals(repositories.size(), 3);
-        Assert.assertEquals(repositories.get(0).getName(), "bootstrap");
-        Assert.assertEquals(repositories.get(1).getName(), "react");
-        Assert.assertEquals(repositories.get(2).getName(), "vue");
+        assertEquals(repositories.size(), 3);
+        assertEquals(repositories.get(0).getName(), "bootstrap");
+        assertEquals(repositories.get(1).getName(), "react");
+        assertEquals(repositories.get(2).getName(), "vue");
     }
 
     @Test(expected = RequestException.class)
