@@ -20,15 +20,18 @@ public class MainPresenter implements MainContract.Presenter, Result<SearchResul
 
     @Override
     public void refreshRepoList(int page) {
+        view.showLoading();
         repository.getRepositories(page, this);
     }
 
     @Override
     public void success(SearchResult data) {
         view.updateRepoList(data.getRepositories());
+        view.hideLoading();
     }
 
     @Override
     public void failure(Throwable throwable) {
+        view.hideLoading();
     }
 }
