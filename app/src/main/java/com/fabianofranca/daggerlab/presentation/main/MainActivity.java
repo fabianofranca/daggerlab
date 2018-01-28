@@ -43,7 +43,7 @@ public class MainActivity extends DaggerAppCompatActivity implements MainContrac
     }
 
     @Override
-    public void updateRepoList(List<Repo> repos) {
+    public void updateRepoList(final List<Repo> repos) {
         adapter.refreshData(repos);
     }
 

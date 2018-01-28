@@ -1,5 +1,9 @@
 package com.fabianofranca.daggerlab.infraestruture.services.core.retrofit;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.support.annotation.NonNull;
+
 import com.fabianofranca.daggerlab.infraestruture.services.core.Request;
 import com.fabianofranca.daggerlab.infraestruture.services.core.RequestException;
 import com.fabianofranca.daggerlab.infraestruture.services.core.Result;
@@ -13,22 +17,24 @@ import retrofit2.Response;
 public class RetrofitRequest<T> implements Request<T> {
 
     private Call<T> call;
+    private Handler uiThread;
 
     public RetrofitRequest(Call<T> call) {
         this.call = call;
+        uiThread = new Handler(Looper.getMainLooper());
     }
 
     @Override
     public void call(final Result<T> result) {
         call.enqueue(new Callback<T>() {
             @Override
-            public void onResponse(Call<T> call, Response<T> response) {
-                result.success(response.body());
+            public void onResponse(@NonNull Call<T> call, @NonNull Response<T> response) {
+                uiThread.post( () -> result.success(response.body()));
             }
 
             @Override
-            public void onFailure(Call<T> call, Throwable t) {
-                result.failure(t);
+            public void onFailure(@NonNull Call<T> call, @NonNull Throwable t) {
+                uiThread.post( () -> result.failure(t));
             }
         });
     }

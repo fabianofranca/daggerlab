@@ -45,7 +45,7 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder> {
 
     public void refreshData(List<Repo> repos) {
         this.repos = repos;
-        this.notifyDataSetChanged();
+        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -59,7 +59,7 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder> {
             super(view);
             this.view = view;
 
-            ButterKnife.bind(this.view);
+            ButterKnife.bind(this, this.view);
         }
 
         public void bind(Repo repo) {
