@@ -1,8 +1,8 @@
-package com.fabianofranca.daggerlab.infraestruture.services.core.retrofit;
+package com.fabianofranca.daggerlab.infraestruture.core.retrofit;
 
 import android.support.annotation.Nullable;
 
-import com.fabianofranca.daggerlab.infraestruture.services.core.Request;
+import com.fabianofranca.daggerlab.infraestruture.core.Request;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;

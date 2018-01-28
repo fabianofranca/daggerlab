@@ -1,7 +1,7 @@
-package com.fabianofranca.daggerlab.infraestruture.services.core.retrofit.di;
+package com.fabianofranca.daggerlab.infraestruture.core.retrofit.di;
 
-import com.fabianofranca.daggerlab.infraestruture.services.core.ServiceFactory;
-import com.fabianofranca.daggerlab.infraestruture.services.core.retrofit.RetrofitServiceFactory;
+import com.fabianofranca.daggerlab.infraestruture.core.ServiceFactory;
+import com.fabianofranca.daggerlab.infraestruture.core.retrofit.RetrofitServiceFactory;
 
 import javax.inject.Singleton;
 

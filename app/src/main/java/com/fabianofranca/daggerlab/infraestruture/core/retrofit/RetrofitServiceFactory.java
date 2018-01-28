@@ -1,7 +1,7 @@
-package com.fabianofranca.daggerlab.infraestruture.services.core.retrofit;
+package com.fabianofranca.daggerlab.infraestruture.core.retrofit;
 
-import com.fabianofranca.daggerlab.infraestruture.services.core.ServiceFactory;
-import com.fabianofranca.daggerlab.infraestruture.services.core.BaseUrl;
+import com.fabianofranca.daggerlab.infraestruture.core.ServiceFactory;
+import com.fabianofranca.daggerlab.infraestruture.core.BaseUrl;
 
 import javax.inject.Inject;
 

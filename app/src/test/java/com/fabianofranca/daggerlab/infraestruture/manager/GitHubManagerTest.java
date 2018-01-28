@@ -1,11 +1,10 @@
 package com.fabianofranca.daggerlab.infraestruture.manager;
 
 import com.fabianofranca.daggerlab.BaseTest;
-import com.fabianofranca.daggerlab.infraestruture.manager.GitHub.GitHubManager;
 import com.fabianofranca.daggerlab.infraestruture.services.GitHubService;
 import com.fabianofranca.daggerlab.infraestruture.services.dto.SearchResult;
-import com.fabianofranca.daggerlab.infraestruture.services.core.Result;
-import com.fabianofranca.daggerlab.infraestruture.services.core.retrofit.RetrofitRequest;
+import com.fabianofranca.daggerlab.infraestruture.core.RequestResult;
+import com.fabianofranca.daggerlab.infraestruture.core.retrofit.RetrofitRequest;
 
 import org.junit.Test;
 import org.mockito.Mock;
@@ -20,7 +19,7 @@ public class GitHubManagerTest extends BaseTest {
     private GitHubService service;
 
     @Mock
-    private Result<SearchResult> result;
+    private RequestResult<SearchResult> requestResult;
 
     @Mock
     private RetrofitRequest<SearchResult> request;
@@ -32,8 +31,8 @@ public class GitHubManagerTest extends BaseTest {
 
         when(service.searchRepositories(anyInt())).thenReturn(request);
 
-        manager.getRepositories(1, result);
+        manager.getRepositories(1, requestResult);
 
-        verify(request).call(result);
+        verify(request).call(requestResult);
     }
 }

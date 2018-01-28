@@ -2,7 +2,7 @@ package com.fabianofranca.daggerlab.di;
 
 import com.fabianofranca.daggerlab.di.module.infraestruture.ServicesModule;
 import com.fabianofranca.daggerlab.infraestruture.services.BaseGitHubServiceTest;
-import com.fabianofranca.daggerlab.infraestruture.services.core.retrofit.di.RetrofitModule;
+import com.fabianofranca.daggerlab.infraestruture.core.retrofit.di.RetrofitModule;
 
 import javax.inject.Singleton;
 

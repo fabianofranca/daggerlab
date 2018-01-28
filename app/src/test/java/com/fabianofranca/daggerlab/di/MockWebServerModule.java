@@ -1,6 +1,6 @@
 package com.fabianofranca.daggerlab.di;
 
-import com.fabianofranca.daggerlab.infraestruture.services.core.BaseUrl;
+import com.fabianofranca.daggerlab.infraestruture.core.BaseUrl;
 
 import java.io.IOException;
 

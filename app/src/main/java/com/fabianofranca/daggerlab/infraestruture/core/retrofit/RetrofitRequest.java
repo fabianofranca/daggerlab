@@ -1,12 +1,14 @@
-package com.fabianofranca.daggerlab.infraestruture.services.core.retrofit;
+package com.fabianofranca.daggerlab.infraestruture.core.retrofit;
 
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 
-import com.fabianofranca.daggerlab.infraestruture.services.core.Request;
-import com.fabianofranca.daggerlab.infraestruture.services.core.RequestException;
-import com.fabianofranca.daggerlab.infraestruture.services.core.Result;
+import com.fabianofranca.daggerlab.infraestruture.core.Request;
+import com.fabianofranca.daggerlab.infraestruture.core.exceptions.NetworkException;
+import com.fabianofranca.daggerlab.infraestruture.core.exceptions.RequestException;
+import com.fabianofranca.daggerlab.infraestruture.core.RequestResult;
+import com.fabianofranca.daggerlab.infraestruture.core.exceptions.UnexpectedException;
 
 import java.io.IOException;
 
@@ -25,16 +27,27 @@ public class RetrofitRequest<T> implements Request<T> {
     }
 
     @Override
-    public void call(final Result<T> result) {
+    public void call(final RequestResult<T> requestResult) {
         call.enqueue(new Callback<T>() {
             @Override
             public void onResponse(@NonNull Call<T> call, @NonNull Response<T> response) {
-                uiThread.post( () -> result.success(response.body()));
+                uiThread.post(() -> {
+                    if (response.isSuccessful()) {
+                        requestResult.success(response.body());
+                    } else {
+                        try {
+                            throw new RequestException(response.errorBody().string(),
+                                    response.code());
+                        } catch (IOException e) {
+                            throw new UnexpectedException(e);
+                        }
+                    }
+                });
             }
 
             @Override
             public void onFailure(@NonNull Call<T> call, @NonNull Throwable t) {
-                uiThread.post( () -> result.failure(t));
+                uiThread.post(() -> { throw new NetworkException(t); });
             }
         });
     }

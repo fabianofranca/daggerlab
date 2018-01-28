@@ -1,9 +1,9 @@
-package com.fabianofranca.daggerlab.infraestruture.manager.GitHub;
+package com.fabianofranca.daggerlab.infraestruture.manager;
 
 import com.fabianofranca.daggerlab.domain.repositories.GitHubRepository;
 import com.fabianofranca.daggerlab.infraestruture.services.GitHubService;
 import com.fabianofranca.daggerlab.infraestruture.services.dto.SearchResult;
-import com.fabianofranca.daggerlab.infraestruture.services.core.Result;
+import com.fabianofranca.daggerlab.infraestruture.core.RequestResult;
 
 import javax.inject.Inject;
 
@@ -17,7 +17,7 @@ public class GitHubManager implements GitHubRepository {
     }
 
     @Override
-    public void getRepositories(final int page, Result<SearchResult> result) {
-        service.searchRepositories(page).call(result);
+    public void getRepositories(final int page, RequestResult<SearchResult> requestResult) {
+        service.searchRepositories(page).call(requestResult);
     }
 }

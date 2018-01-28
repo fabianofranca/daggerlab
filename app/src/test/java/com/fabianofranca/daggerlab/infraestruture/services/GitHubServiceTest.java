@@ -1,7 +1,7 @@
 package com.fabianofranca.daggerlab.infraestruture.services;
 
 import com.fabianofranca.daggerlab.domain.entity.Repo;
-import com.fabianofranca.daggerlab.infraestruture.services.core.RequestException;
+import com.fabianofranca.daggerlab.infraestruture.core.exceptions.RequestException;
 import com.fabianofranca.daggerlab.infraestruture.services.dto.SearchResult;
 
 import org.junit.Assert;

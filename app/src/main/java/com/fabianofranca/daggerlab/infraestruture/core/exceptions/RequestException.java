@@ -1,4 +1,4 @@
-package com.fabianofranca.daggerlab.infraestruture.services.core;
+package com.fabianofranca.daggerlab.infraestruture.core.exceptions;
 
 public class RequestException extends RuntimeException {
 

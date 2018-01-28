@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.fabianofranca.daggerlab.R;
 import com.fabianofranca.daggerlab.domain.entity.Repo;
+import com.fabianofranca.daggerlab.presentation.core.BaseActivity;
 
 import java.util.List;
 
@@ -14,9 +15,8 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import dagger.android.support.DaggerAppCompatActivity;
 
-public class MainActivity extends DaggerAppCompatActivity implements MainContract.View {
+public class MainActivity extends BaseActivity implements MainContract.View {
 
     @Inject
     MainContract.Presenter presenter;

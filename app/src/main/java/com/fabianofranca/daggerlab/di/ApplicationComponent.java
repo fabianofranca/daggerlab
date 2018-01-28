@@ -6,9 +6,11 @@ import com.fabianofranca.daggerlab.DaggerLabApplication;
 import com.fabianofranca.daggerlab.di.module.ActivityBindingModule;
 import com.fabianofranca.daggerlab.di.module.ApplicationModule;
 import com.fabianofranca.daggerlab.di.module.infraestruture.BaseUrlModule;
+import com.fabianofranca.daggerlab.di.module.infraestruture.ExceptionSolutionsModule;
 import com.fabianofranca.daggerlab.di.module.infraestruture.ServicesModule;
 import com.fabianofranca.daggerlab.di.module.infraestruture.manager.GitHubManagerModule;
-import com.fabianofranca.daggerlab.infraestruture.services.core.retrofit.di.RetrofitModule;
+import com.fabianofranca.daggerlab.infraestruture.core.exceptions.di.ExceptionsModule;
+import com.fabianofranca.daggerlab.infraestruture.core.retrofit.di.RetrofitModule;
 
 import javax.inject.Singleton;
 
@@ -19,6 +21,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
 
 @Singleton
 @Component(modules = {
+        ExceptionsModule.class,
+        ExceptionSolutionsModule.class,
         RetrofitModule.class,
         ApplicationModule.class,
         ActivityBindingModule.class,
