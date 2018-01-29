@@ -1,7 +1,7 @@
 package com.fabianofranca.daggerlab.di.module.infraestruture;
 
-import com.fabianofranca.daggerlab.infraestruture.core.exceptions.ExceptionSolution;
-import com.fabianofranca.daggerlab.infraestruture.core.exceptions.SnackbarExceptionSolution;
+import com.fabianofranca.daggerlab.core.presentation.exceptions.ExceptionSolution;
+import com.fabianofranca.daggerlab.core.presentation.exceptions.SnackbarExceptionSolution;
 
 import javax.inject.Singleton;
 

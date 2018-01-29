@@ -1,6 +1,6 @@
 package com.fabianofranca.daggerlab.presentation.main;
 
-import com.fabianofranca.daggerlab.domain.entity.Repo;
+import com.fabianofranca.daggerlab.domain.entities.Repo;
 
 import java.util.List;
 

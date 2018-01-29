@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.fabianofranca.daggerlab.R;
-import com.fabianofranca.daggerlab.domain.entity.Repo;
+import com.fabianofranca.daggerlab.domain.entities.Repo;
 
 import java.util.Arrays;
 import java.util.List;

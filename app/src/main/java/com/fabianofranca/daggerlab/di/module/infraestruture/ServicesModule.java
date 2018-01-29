@@ -1,9 +1,9 @@
 package com.fabianofranca.daggerlab.di.module.infraestruture;
 
 
-import com.fabianofranca.daggerlab.infraestruture.services.GitHubService;
-import com.fabianofranca.daggerlab.infraestruture.core.BaseUrl;
-import com.fabianofranca.daggerlab.infraestruture.core.retrofit.RetrofitServiceFactory;
+import com.fabianofranca.daggerlab.infrastructure.services.GitHubService;
+import com.fabianofranca.daggerlab.core.infrastructure.BaseUrl;
+import com.fabianofranca.daggerlab.core.infrastructure.retrofit.RetrofitServiceFactory;
 
 import javax.inject.Singleton;
 

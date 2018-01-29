@@ -1,7 +1,7 @@
 package com.fabianofranca.daggerlab.di.module.infraestruture.manager;
 
 import com.fabianofranca.daggerlab.domain.repositories.GitHubRepository;
-import com.fabianofranca.daggerlab.infraestruture.manager.GitHubManager;
+import com.fabianofranca.daggerlab.infrastructure.managers.GitHubManager;
 
 import javax.inject.Singleton;
 

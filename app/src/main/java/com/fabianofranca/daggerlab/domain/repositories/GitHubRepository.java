@@ -1,7 +1,7 @@
 package com.fabianofranca.daggerlab.domain.repositories;
 
-import com.fabianofranca.daggerlab.infraestruture.core.RequestResult;
-import com.fabianofranca.daggerlab.infraestruture.services.dto.SearchResult;
+import com.fabianofranca.daggerlab.core.infrastructure.RequestResult;
+import com.fabianofranca.daggerlab.infrastructure.services.dto.SearchResult;
 
 public interface GitHubRepository {
 

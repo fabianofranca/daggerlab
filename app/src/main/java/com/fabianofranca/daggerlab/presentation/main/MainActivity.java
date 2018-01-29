@@ -6,8 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.fabianofranca.daggerlab.R;
-import com.fabianofranca.daggerlab.domain.entity.Repo;
-import com.fabianofranca.daggerlab.presentation.core.BaseActivity;
+import com.fabianofranca.daggerlab.domain.entities.Repo;
+import com.fabianofranca.daggerlab.core.presentation.BaseActivity;
 
 import java.util.List;
 

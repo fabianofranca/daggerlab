@@ -18,11 +18,11 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void refreshRepoList(int page) {
-        view.showLoading();
+        //view.showLoading();
 
         repository.getRepositories(page, (data) -> {
             view.updateRepoList(data.getRepositories());
-            view.hideLoading();
+            //view.hideLoading();
         });
     }
 }

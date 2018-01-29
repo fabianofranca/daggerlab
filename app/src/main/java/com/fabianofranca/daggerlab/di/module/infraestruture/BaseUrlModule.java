@@ -1,6 +1,6 @@
 package com.fabianofranca.daggerlab.di.module.infraestruture;
 
-import com.fabianofranca.daggerlab.infraestruture.core.BaseUrl;
+import com.fabianofranca.daggerlab.core.infrastructure.BaseUrl;
 
 import javax.inject.Singleton;
 
