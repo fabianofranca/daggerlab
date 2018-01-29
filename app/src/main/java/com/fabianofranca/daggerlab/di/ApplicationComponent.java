@@ -9,7 +9,6 @@ import com.fabianofranca.daggerlab.di.module.infraestruture.BaseUrlModule;
 import com.fabianofranca.daggerlab.di.module.infraestruture.ExceptionSolutionsModule;
 import com.fabianofranca.daggerlab.di.module.infraestruture.ServicesModule;
 import com.fabianofranca.daggerlab.di.module.infraestruture.manager.GitHubManagerModule;
-import com.fabianofranca.daggerlab.core.di.ExceptionsModule;
 import com.fabianofranca.daggerlab.core.di.RetrofitModule;
 
 import javax.inject.Singleton;
@@ -21,7 +20,6 @@ import dagger.android.support.AndroidSupportInjectionModule;
 
 @Singleton
 @Component(modules = {
-        ExceptionsModule.class,
         ExceptionSolutionsModule.class,
         RetrofitModule.class,
         ApplicationModule.class,

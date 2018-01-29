@@ -1,24 +1,19 @@
 package com.fabianofranca.daggerlab.core.presentation.exceptions;
 
 import java.util.Iterator;
-import java.util.Set;
-
-import javax.inject.Inject;
+import java.util.List;
 
 public class ExceptionResolve {
 
-    private Set<ExceptionSolution> solutions;
+    private List<SolutionMap> solutionMaps;
 
     private ExceptionContext exceptionContext;
 
-    @Inject
-    public ExceptionResolve(Set<ExceptionSolution> solutions) {
-        this.solutions = solutions;
-    }
-
     public void resolver(Throwable throwable) {
 
-        if (solutions.isEmpty()) {
+        solutionMaps.
+
+        if (!solutionMaps.isEmpty()) {
 
             Iterator<ExceptionSolution> iterator = solutions.iterator();
             boolean hasSolution = false;

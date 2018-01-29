@@ -10,7 +10,7 @@ import javax.inject.Inject;
 public class SnackbarExceptionSolution implements ExceptionSolution {
 
     @Inject
-    public SnackbarExceptionSolution() {
+    public SnackbarExceptionSolution()  {
     }
 
     @Override
