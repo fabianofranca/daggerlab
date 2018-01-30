@@ -1,36 +1,41 @@
 package com.fabianofranca.daggerlab.core.presentation.exceptions;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Iterator;
-import java.util.List;
 
 public class ExceptionResolve {
 
-    private List<SolutionMap> solutionMaps;
+    private Deque<SolutionMap> stack;
 
-    private ExceptionContext exceptionContext;
+    public ExceptionResolve() {
+        stack = new ArrayDeque<>();
+    }
 
     public void resolver(Throwable throwable) {
 
-        solutionMaps.
+        if (!stack.isEmpty()) {
 
-        if (!solutionMaps.isEmpty()) {
+            Iterator<SolutionMap> iterator = stack.iterator();
 
-            Iterator<ExceptionSolution> iterator = solutions.iterator();
-            boolean hasSolution = false;
             ExceptionSolution solution = null;
 
-            while (!hasSolution && solutions.iterator().hasNext()) {
-                solution = iterator.next();
-                hasSolution = solution.canSolve(throwable);
+            while (solution == null && stack.iterator().hasNext()) {
+                SolutionMap map = iterator.next();
+                solution = map.getSolution(throwable);
             }
 
-            if (hasSolution) {
-                solution.resolver(throwable, exceptionContext);
+            if (solution != null) {
+                solution.resolver(throwable);
             }
         }
     }
 
-    public void setExceptionContext(ExceptionContext context) {
-        exceptionContext = context;
+    public void addSolutionMap(SolutionMap map) {
+        stack.push(map);
+    }
+
+    public void removeSolutionMap(SolutionMap map) {
+        stack.remove(map);
     }
 }

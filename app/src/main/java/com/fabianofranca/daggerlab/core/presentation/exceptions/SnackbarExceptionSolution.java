@@ -19,18 +19,18 @@ public class SnackbarExceptionSolution implements ExceptionSolution {
     }
 
     @Override
-    public void resolver(Throwable throwable, ExceptionContext context) {
+    public void resolver(Throwable throwable) {
 
-        if (context instanceof SnackbarExceptionContext) {
-            View view = ((SnackbarExceptionContext)context).getContext();
-
-            Snackbar snackbar = Snackbar.make(view, throwable.getLocalizedMessage(),
-                    Snackbar.LENGTH_INDEFINITE)
-                    .setActionTextColor(Color.WHITE);
-
-            snackbar.show();
-
-            snackbar.setAction("OK", (v) -> snackbar.dismiss());
-        }
+//        if (context instanceof SnackbarExceptionContext) {
+//            View view = ((SnackbarExceptionContext)context).getContext();
+//
+//            Snackbar snackbar = Snackbar.make(view, throwable.getLocalizedMessage(),
+//                    Snackbar.LENGTH_INDEFINITE)
+//                    .setActionTextColor(Color.WHITE);
+//
+//            snackbar.show();
+//
+//            snackbar.setAction("OK", (v) -> snackbar.dismiss());
+//        }
     }
 }

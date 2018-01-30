@@ -17,7 +17,7 @@ public class BaseActivity extends DaggerAppCompatActivity implements SnackbarExc
     @Override
     protected void onResume() {
         super.onResume();
-        exceptionResolve.setExceptionContext(this);
+        //exceptionResolve.setExceptionContext(this);
     }
 
     @Override
