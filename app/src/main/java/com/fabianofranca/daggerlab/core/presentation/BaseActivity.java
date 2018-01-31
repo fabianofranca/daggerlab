@@ -1,31 +1,25 @@
 package com.fabianofranca.daggerlab.core.presentation;
 
-import android.view.View;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 
 import com.fabianofranca.daggerlab.core.presentation.exceptions.ExceptionResolve;
-import com.fabianofranca.daggerlab.core.presentation.exceptions.SnackbarExceptionContext;
+import com.fabianofranca.daggerlab.core.presentation.exceptions.SnackbarExceptionSolution;
 
 import javax.inject.Inject;
 
 import dagger.android.support.DaggerAppCompatActivity;
 
-public class BaseActivity extends DaggerAppCompatActivity implements SnackbarExceptionContext {
+public class BaseActivity extends DaggerAppCompatActivity {
 
     @Inject
     ExceptionResolve exceptionResolve;
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        //exceptionResolve.setExceptionContext(this);
-    }
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-    @Override
-    public View getContext() {
-        return getBaseViewToShowSnackBar();
-    }
-
-    protected View getBaseViewToShowSnackBar() {
-        return getWindow().getDecorView().findViewById(android.R.id.content);
+        new SnackbarExceptionSolution(getLifecycle(), exceptionResolve,
+                getWindow().getDecorView().findViewById(android.R.id.content));
     }
 }

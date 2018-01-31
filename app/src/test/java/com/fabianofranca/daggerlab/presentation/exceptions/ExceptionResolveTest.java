@@ -3,7 +3,6 @@ package com.fabianofranca.daggerlab.presentation.exceptions;
 import com.fabianofranca.daggerlab.BaseTest;
 import com.fabianofranca.daggerlab.core.presentation.exceptions.ExceptionResolve;
 import com.fabianofranca.daggerlab.core.presentation.exceptions.ExceptionSolution;
-import com.fabianofranca.daggerlab.core.presentation.exceptions.SolutionMap;
 
 import org.junit.Test;
 import org.mockito.Mock;
@@ -34,11 +33,7 @@ public class ExceptionResolveTest extends BaseTest {
     public void resolver_isCorrect() throws Exception {
         ExceptionResolve resolve = new ExceptionResolve();
 
-        SolutionMap map = new SolutionMap();
-
-        map.addSolution(Exception.class, solutionA);
-
-        resolve.addSolutionMap(map);
+        resolve.addSolution(solutionA);
 
         Exception exception = new Exception();
 
@@ -52,14 +47,8 @@ public class ExceptionResolveTest extends BaseTest {
     public void resolver_stackWorks() throws Exception {
         ExceptionResolve resolve = new ExceptionResolve();
 
-        SolutionMap mapA = new SolutionMap();
-        SolutionMap mapB = new SolutionMap();
-
-        mapA.addSolutionForAllExceptions(solutionA);
-        mapB.addSolutionForAllExceptions(solutionB);
-
-        resolve.addSolutionMap(mapA);
-        resolve.addSolutionMap(mapB);
+        resolve.addSolution(solutionA);
+        resolve.addSolution(solutionB);
 
         Exception exception = new Exception();
 
@@ -70,7 +59,7 @@ public class ExceptionResolveTest extends BaseTest {
 
         reset(solutionB);
 
-        resolve.removeSolutionMap(mapB);
+        resolve.removeSolution(solutionB);
         resolve.resolver(exception);
 
         verify(solutionA).resolver(exception);

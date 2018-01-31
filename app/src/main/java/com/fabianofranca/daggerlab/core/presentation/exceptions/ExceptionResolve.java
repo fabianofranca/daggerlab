@@ -6,23 +6,25 @@ import java.util.Iterator;
 
 public class ExceptionResolve {
 
-    private Deque<SolutionMap> stack;
+    private Deque<ExceptionSolution> solutions;
 
     public ExceptionResolve() {
-        stack = new ArrayDeque<>();
+        solutions = new ArrayDeque<>();
     }
 
     public void resolver(Throwable throwable) {
 
-        if (!stack.isEmpty()) {
+        if (!solutions.isEmpty()) {
 
-            Iterator<SolutionMap> iterator = stack.iterator();
+            Iterator<ExceptionSolution> iterator = solutions.iterator();
 
             ExceptionSolution solution = null;
 
-            while (solution == null && stack.iterator().hasNext()) {
-                SolutionMap map = iterator.next();
-                solution = map.getSolution(throwable);
+            while (solution == null && solutions.iterator().hasNext()) {
+                ExceptionSolution nextSolution = iterator.next();
+                if (nextSolution.canSolve(throwable)) {
+                    solution = nextSolution;
+                }
             }
 
             if (solution != null) {
@@ -31,11 +33,11 @@ public class ExceptionResolve {
         }
     }
 
-    public void addSolutionMap(SolutionMap map) {
-        stack.push(map);
+    public void addSolution(ExceptionSolution solution) {
+        solutions.push(solution);
     }
 
-    public void removeSolutionMap(SolutionMap map) {
-        stack.remove(map);
+    public void removeSolution(ExceptionSolution solution) {
+        solutions.remove(solution);
     }
 }

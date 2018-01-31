@@ -12,7 +12,7 @@ public class ExceptionsModule {
 
     @Singleton
     @Provides
-    ExceptionResolve provideExceptionHandler() {
-        return new ExceptionResolve();
+    ExceptionResolve provideExceptionResolve() {
+        return  new ExceptionResolve();
     }
 }

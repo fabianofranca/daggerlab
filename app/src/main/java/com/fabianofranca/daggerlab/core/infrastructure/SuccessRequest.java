@@ -1,6 +1,6 @@
 package com.fabianofranca.daggerlab.core.infrastructure;
 
 @FunctionalInterface
-public interface RequestResult<T> {
+public interface SuccessRequest<T> {
     void success(T data);
 }

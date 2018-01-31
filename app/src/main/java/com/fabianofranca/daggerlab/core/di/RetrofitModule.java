@@ -14,7 +14,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.CallAdapter;
 import retrofit2.Retrofit;
 
-@Module(includes = ExceptionsModule.class)
+@Module
 public abstract class RetrofitModule {
 
     @Singleton
