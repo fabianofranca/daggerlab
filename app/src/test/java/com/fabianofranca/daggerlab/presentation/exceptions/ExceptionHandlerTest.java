@@ -1,7 +1,7 @@
 package com.fabianofranca.daggerlab.presentation.exceptions;
 
 import com.fabianofranca.daggerlab.BaseTest;
-import com.fabianofranca.daggerlab.core.presentation.exceptions.ExceptionResolve;
+import com.fabianofranca.daggerlab.core.presentation.exceptions.ExceptionHandler;
 import com.fabianofranca.daggerlab.core.presentation.exceptions.ExceptionSolution;
 
 import org.junit.Test;
@@ -13,7 +13,7 @@ import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class ExceptionResolveTest extends BaseTest {
+public class ExceptionHandlerTest extends BaseTest {
 
     @Mock
     ExceptionSolution solutionA;
@@ -31,38 +31,38 @@ public class ExceptionResolveTest extends BaseTest {
 
     @Test
     public void resolver_isCorrect() throws Exception {
-        ExceptionResolve resolve = new ExceptionResolve();
+        ExceptionHandler resolve = new ExceptionHandler();
 
         resolve.addSolution(solutionA);
 
         Exception exception = new Exception();
 
-        resolve.resolver(exception);
+        resolve.handling(exception);
 
         verify(solutionA).canSolve(exception);
-        verify(solutionA).resolver(exception);
+        verify(solutionA).solve(exception);
     }
 
     @Test
     public void resolver_stackWorks() throws Exception {
-        ExceptionResolve resolve = new ExceptionResolve();
+        ExceptionHandler resolve = new ExceptionHandler();
 
         resolve.addSolution(solutionA);
         resolve.addSolution(solutionB);
 
         Exception exception = new Exception();
 
-        resolve.resolver(exception);
+        resolve.handling(exception);
 
-        verify(solutionB).resolver(exception);
-        verify(solutionA, never()).resolver(exception);
+        verify(solutionB).solve(exception);
+        verify(solutionA, never()).solve(exception);
 
         reset(solutionB);
 
         resolve.removeSolution(solutionB);
-        resolve.resolver(exception);
+        resolve.handling(exception);
 
-        verify(solutionA).resolver(exception);
-        verify(solutionB, never()).resolver(exception);
+        verify(solutionA).solve(exception);
+        verify(solutionB, never()).solve(exception);
     }
 }

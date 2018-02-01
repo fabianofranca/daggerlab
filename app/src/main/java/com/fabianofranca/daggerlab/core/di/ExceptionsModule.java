@@ -1,6 +1,6 @@
 package com.fabianofranca.daggerlab.core.di;
 
-import com.fabianofranca.daggerlab.core.presentation.exceptions.ExceptionResolve;
+import com.fabianofranca.daggerlab.core.presentation.exceptions.ExceptionHandler;
 
 import javax.inject.Singleton;
 
@@ -12,7 +12,7 @@ public class ExceptionsModule {
 
     @Singleton
     @Provides
-    ExceptionResolve provideExceptionResolve() {
-        return  new ExceptionResolve();
+    ExceptionHandler provideExceptionResolve() {
+        return  new ExceptionHandler();
     }
 }

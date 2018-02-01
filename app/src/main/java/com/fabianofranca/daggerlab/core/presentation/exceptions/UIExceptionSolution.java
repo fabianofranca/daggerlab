@@ -4,33 +4,30 @@ import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
 
-public abstract class UIExceptionSolution implements ExceptionSolution, LifecycleObserver {
+public abstract class UIExceptionSolution extends ExceptionSolution implements LifecycleObserver {
 
-    private ExceptionResolve exceptionResolve;
+    private ExceptionHandler exceptionHandler;
 
-    public UIExceptionSolution(Lifecycle lifecycle, ExceptionResolve exceptionResolve) {
-        this.exceptionResolve = exceptionResolve;
+    public UIExceptionSolution(Lifecycle lifecycle, ExceptionHandler exceptionHandler,
+                               ExceptionSolver exceptionSolver) {
+
+        super(exceptionSolver);
+
+        this.exceptionHandler = exceptionHandler;
 
         lifecycle.addObserver(this);
     }
 
     @Override
-    public boolean canSolve(Throwable throwable) {
-        return false;
-    }
-
-    @Override
-    public void resolver(Throwable throwable) {
-
-    }
+    public abstract void solve(Throwable throwable);
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     void addSolution() {
-        exceptionResolve.addSolution(this);
+        exceptionHandler.addSolution(this);
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     void removeSolution() {
-        exceptionResolve.removeSolution(this);
+        exceptionHandler.removeSolution(this);
     }
 }

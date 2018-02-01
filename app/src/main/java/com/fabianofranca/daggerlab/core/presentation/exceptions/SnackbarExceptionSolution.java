@@ -2,30 +2,35 @@ package com.fabianofranca.daggerlab.core.presentation.exceptions;
 
 import android.arch.lifecycle.Lifecycle;
 import android.graphics.Color;
-import android.view.View;
 
 import android.support.design.widget.Snackbar;
 
+import com.fabianofranca.daggerlab.core.presentation.ViewProvider;
+
 public class SnackbarExceptionSolution extends UIExceptionSolution {
 
-    private View view;
+    private ViewProvider viewProvider;
 
-    public SnackbarExceptionSolution(Lifecycle lifecycle, ExceptionResolve exceptionResolve,
-                                     View view) {
+    public static SnackbarExceptionSolution create(Lifecycle lifecycle,
+                                                   ExceptionHandler exceptionHandler,
+                                                   ViewProvider viewProvider,
+                                                   ExceptionSolver exceptionSolver) {
 
-        super(lifecycle, exceptionResolve);
-        this.view = view;
+        return new SnackbarExceptionSolution(lifecycle, exceptionHandler,
+                viewProvider, exceptionSolver);
+    }
+
+    private SnackbarExceptionSolution(Lifecycle lifecycle, ExceptionHandler exceptionHandler,
+                                     ViewProvider viewProvider, ExceptionSolver exceptionSolver) {
+
+        super(lifecycle, exceptionHandler, exceptionSolver);
+        this.viewProvider = viewProvider;
     }
 
     @Override
-    public boolean canSolve(Throwable throwable) {
-        return true;
-    }
+    public void solve(Throwable throwable) {
 
-    @Override
-    public void resolver(Throwable throwable) {
-
-        Snackbar snackbar = Snackbar.make(view, throwable.getLocalizedMessage(),
+        Snackbar snackbar = Snackbar.make(viewProvider.getView(), throwable.getLocalizedMessage(),
                 Snackbar.LENGTH_INDEFINITE)
                 .setActionTextColor(Color.WHITE);
 

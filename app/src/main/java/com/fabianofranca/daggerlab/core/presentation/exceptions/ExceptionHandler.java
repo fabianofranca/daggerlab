@@ -4,15 +4,15 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Iterator;
 
-public class ExceptionResolve {
+public class ExceptionHandler {
 
     private Deque<ExceptionSolution> solutions;
 
-    public ExceptionResolve() {
+    public ExceptionHandler() {
         solutions = new ArrayDeque<>();
     }
 
-    public void resolver(Throwable throwable) {
+    public void handling(Throwable throwable) {
 
         if (!solutions.isEmpty()) {
 
@@ -28,7 +28,7 @@ public class ExceptionResolve {
             }
 
             if (solution != null) {
-                solution.resolver(throwable);
+                solution.solve(throwable);
             }
         }
     }

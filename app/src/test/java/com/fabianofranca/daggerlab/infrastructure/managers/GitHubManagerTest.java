@@ -2,7 +2,7 @@ package com.fabianofranca.daggerlab.infrastructure.managers;
 
 import com.fabianofranca.daggerlab.BaseTest;
 import com.fabianofranca.daggerlab.core.infrastructure.UIThreadFactory;
-import com.fabianofranca.daggerlab.core.presentation.exceptions.ExceptionResolve;
+import com.fabianofranca.daggerlab.core.presentation.exceptions.ExceptionHandler;
 import com.fabianofranca.daggerlab.infrastructure.services.GitHubService;
 import com.fabianofranca.daggerlab.infrastructure.services.dto.SearchResult;
 import com.fabianofranca.daggerlab.core.infrastructure.SuccessRequest;
@@ -28,7 +28,7 @@ public class GitHubManagerTest extends BaseTest {
     private RetrofitRequest<SearchResult> request;
 
     @Mock
-    private ExceptionResolve resolve;
+    private ExceptionHandler resolve;
 
     @Mock
     private UIThreadFactory uiThreadFactory;
